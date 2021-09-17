@@ -9,3 +9,5 @@ The program does not consider Double or Split rules of Blackjack, players may ti
 The initial game setup provides for player options:
     Deal is from 1 to 8 standard 52 card decks
     From 1 to 5 players against Dealer
+
+to run: python blackjack.py
