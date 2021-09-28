@@ -1,11 +1,14 @@
 """ assignment_5_james_beckwith
 Blackjack / Twenty-one
 
-Blackjack is a popular card game. The objective of the game is to draw cards and obtain the highest total not exceeding 21.
-Strictly speaking this is the game Twenty-one rather than Blackjack since the program is
-is not dealing with the true blackjack of Spades-Ace plus Jack of Spades or Clubs
+Blackjack is a popular card game. The objective of the game is to draw cards
+and obtain the highest total not exceeding 21.
+Strictly speaking this is the game Twenty-one rather than Blackjack since the
+program is not dealing with the true blackjack of Spades-Ace plus Jack of
+Spades or Clubs
 
-The program does not consider Double or Split rules of Blackjack, players may tie with Dealer
+The program does not consider Double or Split rules of Blackjack, players may
+tie with Dealer
 
 The initial game setup provides for player options:
     Deal is from 1 to 8 standard 52 card decks
@@ -16,16 +19,17 @@ import random
 import sys
 
 VALID_CHARS = set("abcdefghijklmnopqrstuvwxyz'-")
-FACES = [("Ace", 11), ("2", 2), ("3", 3), ("4", 4), ("5", 5), ("6", 6), ("7", 7),
-         ("8", 8), ("9", 9), ("10", 10), ("Jack", 10), ("Queen", 10), ("King", 10)]
+FACES = [("Ace", 11), ("2", 2), ("3", 3), ("4", 4), ("5", 5), ("6", 6),
+    ("7", 7), ("8", 8), ("9", 9), ("10", 10), ("Jack", 10), ("Queen", 10),
+    ("King", 10)]
 SUITS = ["Clubs", "Diamonds", "Hearts", "Spades"]
-SUIT = 0    # Index constants for semantic access to a playing card structure fields
+SUIT = 0    # Index constants for semantic access to playing card  fields
 FACE = 1    #
-VAL = 2     # 
+VAL = 2     #
 
 def get_input(prompt):
     try:
-        field = input(f'{prompt} ')
+        field = input(f'{prompt}')
     except (KeyboardInterrupt, EOFError):
         print("Goodbye")
         sys.exit()
@@ -157,8 +161,8 @@ def new_play(cards,player_names):
     Parameters:
         cards   list from which cards will be dealt
         player_names    list containing the names of the players in this game
+
     This function will be called for each round of the game
-    
     Deal the first 2 cards to each player and the dealer
     The second card of the dealer will be hidden until it is time for the dealer's
     hand to be played, when it will be shown in the display of the dealer's hand to
@@ -177,7 +181,7 @@ def new_play(cards,player_names):
     dealt = ['first', 'second']
     for i in range(2):  # deal 2 cards to each player and the dealer
         print('\n')
-        for player in reversed(players):    
+        for player in reversed(players):
             card = hit(player, cards)   # the 'hit' function could be called 'deal'
             name = player['name']
             if name.casefold() == 'dealer' and i == 1:
@@ -206,7 +210,7 @@ def new_play(cards,player_names):
             if is_go == 'h':            # Deal another card to player
                 card = hit(player,cards)
                 print(f"\tDealt card {card}")
-                if player['total'] > 21:        # Ace initial value is 11, if 
+                if player['total'] > 21:        # Ace initial value is 11, if
                     if player['aceinhand']:     # hand would bust with an Ace,
                         player['aceinhand'] = False # but only once per Ace
                         player['total'] -= 10   # change Ace value to 1
@@ -218,7 +222,7 @@ def new_play(cards,player_names):
                 alive = False
 
         if player['total'] < 22:        # If a player has high score and not
-            if player['total'] > high_player[1]:    # busted, update the 
+            if player['total'] > high_player[1]:    # busted, update the
                 high_player[0] = player['name']     # high-score tracking
                 high_player[1] = player['total']    # structure
             elif player['total'] == high_player[1]:
